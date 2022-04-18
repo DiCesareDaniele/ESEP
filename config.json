@@ -1,0 +1,12 @@
+{
+  "database": {
+    "host": "172.16.1.99",
+    "port": "3306",
+    "name": "db99999",
+    "user_passwords": {
+      "default": "evRCyB6qzL9A8cUG",
+      "personal": "8eFrZDd6jwr26Uq4",
+      "enterprise": "UdFCPMgV5jzc7Xr8"
+    }
+  }
+}

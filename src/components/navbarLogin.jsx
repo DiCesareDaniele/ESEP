@@ -10,10 +10,6 @@ import {
   ImageSrc,
 } from "@mui/material";
 
-// this is a test
-
-// why is this not working
-
 const NavbarLogin = () => {
   const items = [
     { text: "ABOUT US", img: "/img/img1.png" },
