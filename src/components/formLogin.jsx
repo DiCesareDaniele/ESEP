@@ -8,14 +8,16 @@ import {
   Link,
 } from "@mui/material";
 
-import { React, useRef } from "react";
+import { React, useState } from "react";
 
 const FormLogin = ({ style }) => {
   const login = () => {
-    console.log(mailRef);
+    console.log(mail, password, remember);
   };
 
-  let mailRef = useRef(null);
+  const [mail, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(true);
 
   const paperStyle = {
     padding: 20,
@@ -35,6 +37,9 @@ const FormLogin = ({ style }) => {
     <Grid style={style}>
       <Paper elevation={10} style={paperStyle}>
         <TextField
+          onChange={(e) => {
+            setMail(e.target.value);
+          }}
           label="Email"
           placeholder="Enter your Email"
           fullWidth
@@ -42,6 +47,9 @@ const FormLogin = ({ style }) => {
           style={inputStyle}
         ></TextField>
         <TextField
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
           label="Password"
           type="password"
           placeholder="Enter your Password"
@@ -52,6 +60,9 @@ const FormLogin = ({ style }) => {
         <FormControlLabel
           control={<Checkbox defaultChecked />}
           label="Remember me"
+          onChange={(e) => {
+            setRemember(e.target.checked);
+          }}
         />
         <Button
           onClick={login}
