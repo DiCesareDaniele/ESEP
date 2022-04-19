@@ -65,13 +65,15 @@ CREATE TABLE supply (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	offer VARCHAR(128) NOT NULL,
 	utility ENUM('GAS', 'EE') NOT NULL,
-	contractual_treshold FLOAT(4, 1),
-	max_treshold FLOAT(4, 1),
-	fixed_costs FLOAT(6, 1),
+	voltage INT, -- V --
+	contractual_power_treshold FLOAT(3, 1), -- kW --
+	max_power_treshold FLOAT(3, 1), -- kW --
+	fixed_costs FLOAT(5, 2), -- € --
+	-- F1, F2, F3 €/kWh --
 	F1 FLOAT(4, 3),
 	F2 FLOAT(4, 3),
 	F3 FLOAT(4, 3),
-	gas FLOAT(4, 1),
+	gas FLOAT(4, 3), -- gas €/m3 --
 	supplier VARCHAR(32) NOT NULL,
 	CHECK(gas IS NULL AND F1 IS NOT NULL AND F2 IS NOT NULL AND F3 IS NOT NULL
 			OR gas IS NOT NULL AND F1 IS NULL AND F2 IS NULL AND F3 IS NULL)
@@ -94,9 +96,10 @@ CREATE TABLE contract (
 -- RILEVAZIONI --
 CREATE TABLE detections (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-	date DATE NOT NULL,
+	date_S DATE NOT NULL,
+	date_F DATE NOT NULL,
 	id_meter NOT NULL,
-	detection FLOAT(6, 1),
+	detection FLOAT(6, 1), -- m3 or kW depending on the UTILITY --
 	FOREIGN KEY(id_meter) REFERENCES meter(id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
 );
@@ -109,9 +112,9 @@ CREATE TABLE bill (
 	date_F DATE NOT NULL,
 	deadline DATE NOT NULL,
 	date_P DATE,
-	price FLOAT(7, 2),
+	price FLOAT(7, 2), -- € --
 	id_contract INT NOT NULL,
-	avg_waste FLOAT(5, 1) NOT NULL,
+	avg_waste FLOAT(5, 2) NOT NULL, -- m3/month or kW/month depending on the UTILITY --
 	FOREIGN KEY(id_contract) REFERENCES contract(id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
 );

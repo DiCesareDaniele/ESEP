@@ -1,39 +1,36 @@
-import * as React from "react";
+import React from "react";
 import {
   Box,
   AppBar,
   Toolbar,
   Button,
   Avatar,
-  Grid,
-  ImageButton,
-  ImageSrc,
+  Typography,
 } from "@mui/material";
 
 const NavbarLogin = () => {
   const items = [
-    { text: "ABOUT US", img: "/img/img1.png" },
-    { text: "FAQ", img: "/img/img2.jpg" },
-    { text: "HOME", img: "/img/img3.png" },
+    { text: "ABOUT US", img: "/img/persone.png" },
+    { text: "FAQ", img: "/img/question.png" },
+    { text: "SECURITY", img: "/img/security.png" },
+    { text: "HOME", img: "/img/home.png" },
   ];
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: "#ffffff" }}>
         <Toolbar>
-          <ImageButton
-            sx={{ flexGrow: 1 }}
-            focusRipple
-            style={{
-              width: "100px",
-            }}
-          >
-            <ImageSrc style={{ backgroundImage: "/img/logo.png" }} />
-          </ImageButton>
+          <Box sx={{ flexGrow: 1 }}>
+            <Avatar
+              src="/img/logo_dark.png"
+              variant="rounded"
+              sx={{ width: 175 }}
+            />
+          </Box>
           {items.map((item) => (
-            <Grid key={item.text} alignItems="center">
+            <Button key={item.text}>
               <Avatar src={item.img} variant="rounded" />
-              <Button color="inherit">{item.text}</Button>
-            </Grid>
+              <Typography color="black">{item.text}</Typography>
+            </Button>
           ))}
         </Toolbar>
       </AppBar>

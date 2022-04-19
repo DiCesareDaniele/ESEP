@@ -1,4 +1,3 @@
-// import { createTheme } from "@mui/material/styles";
 import {
   TextField,
   Paper,
@@ -9,15 +8,25 @@ import {
   Link,
 } from "@mui/material";
 
-const FormLogin = ({ props, style }) => {
+import { React, useRef } from "react";
+
+const FormLogin = ({ style }) => {
+  const login = () => {
+    console.log(mailRef);
+  };
+
+  let mailRef = useRef(null);
+
   const paperStyle = {
     padding: 20,
-    height: "50vh",
-    width: 500,
+    height: "auto",
+    width: 600,
+    backgroundColor: "#ffffff",
     margin: "20px auto",
   };
   const inputStyle = {
-    "margin-top": 20,
+    marginTop: 20,
+    backgroundColor: "#ffffff",
   };
   const singInStyle = {
     height: "60px",
@@ -44,7 +53,14 @@ const FormLogin = ({ props, style }) => {
           control={<Checkbox defaultChecked />}
           label="Remember me"
         />
-        <Button type="submit" color="primary" style={singInStyle} fullWidth>
+        <Button
+          onClick={login}
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={singInStyle}
+          fullWidth
+        >
           Sign in
         </Button>
         <Link href="#" underline="hover">
