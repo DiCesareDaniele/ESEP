@@ -8,5 +8,8 @@
       "personal": "8eFrZDd6jwr26Uq4",
       "enterprise": "UdFCPMgV5jzc7Xr8"
     }
+  },
+  "php": {
+    "baseUrl": "http://localhost/esepay/public/php/"
   }
 }

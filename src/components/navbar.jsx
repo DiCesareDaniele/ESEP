@@ -8,13 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const NavbarLogin = () => {
-  const items = [
-    { text: "ABOUT US", img: "/img/persone.png" },
-    { text: "FAQ", img: "/img/question.png" },
-    { text: "SECURITY", img: "/img/security.png" },
-    { text: "HOME", img: "/img/home.png" },
-  ];
+const Navbar = ({ items }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{ backgroundColor: "#ffffff" }}>
@@ -38,4 +32,4 @@ const NavbarLogin = () => {
   );
 };
 
-export default NavbarLogin;
+export default Navbar;

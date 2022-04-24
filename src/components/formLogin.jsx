@@ -9,10 +9,19 @@ import {
 } from "@mui/material";
 
 import { React, useState } from "react";
+import axios from "axios";
 
 const FormLogin = ({ style }) => {
-  const login = () => {
+  const login = async () => {
     console.log(mail, password, remember);
+    const config = await fetch("config.json")
+      .then((resp) => resp.json())
+      .catch((err) => err);
+    let data = await axios
+      .get(config.php.baseUrl + "test.php")
+      .then((resp) => resp.data)
+      .catch((err) => err);
+    console.log(data);
   };
 
   const [mail, setMail] = useState("");

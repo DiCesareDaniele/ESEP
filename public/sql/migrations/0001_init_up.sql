@@ -98,7 +98,7 @@ CREATE TABLE detections (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	date_S DATE NOT NULL,
 	date_F DATE NOT NULL,
-	id_meter NOT NULL,
+	id_meter INT NOT NULL,
 	detection FLOAT(6, 1), -- m3 or kW depending on the UTILITY --
 	FOREIGN KEY(id_meter) REFERENCES meter(id)
 		ON UPDATE CASCADE ON DELETE CASCADE,

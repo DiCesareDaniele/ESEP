@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import FormLogin from "./components/formLogin";
-import NavbarLogin from "./components/navbarLogin";
+import Navbar from "./components/navbar";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
@@ -19,7 +19,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <NavbarLogin />
+      <Navbar
+        items={[
+          { text: "ABOUT US", img: "/img/persone.png" },
+          { text: "FAQ", img: "/img/question.png" },
+          { text: "SECURITY", img: "/img/security.png" },
+        ]}
+      />
       <FormLogin style={{ padding: "100px" }} />
     </ThemeProvider>
   </React.StrictMode>
