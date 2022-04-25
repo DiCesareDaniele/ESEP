@@ -12,10 +12,6 @@ const PageNotFound = ({ style }) => {
     backgroundColor: "#ffffff",
     margin: "auto",
   };
-  const inputStyle = {
-    marginTop: 20,
-    backgroundColor: "#ffffff",
-  };
   return (
     <Grid style={style} container alignItems="center" justifyContent="center">
       <Paper elevation={10} style={paperStyle}>

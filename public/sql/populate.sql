@@ -11,7 +11,7 @@ INSERT INTO account (id, email, password, type, personal_id, enterprise_id) VALU
 -- ACCOUNT BALZO --
 (3, "balzofederico@gmail.com", "$2y$10$G46DvNQjiSvrfMFs5rtZxe0wgfEwTyrXgJIAszGO7I/i/gkqCzKwG", "personal", 1, NULL);
 
-INSERT INTO site (id, indirizzo, city, CAP, apartement_n, personal_id, enterprise_id) VALUES 
+INSERT INTO site (id, site, city, CAP, apartment_n, personal_id, enterprise_id) VALUES 
 -- CASA BALZO --
 (1, "Via Brombeis", "Verona", "37138", 0, 1, NULL),
 -- AZIENDE ESEP --

@@ -10,13 +10,16 @@ import Navbar from "./components/navbar";
 import Home from "./components/home";
 import About from "./components/about";
 import Faq from "./components/faq";
-import PersonalArea from "./components/personal-area";
+import Sites from "./components/sites";
 import PageNotFound from "./components/pageNotFound";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#243142",
+    },
+    secondary: {
+      main: "#202938",
     },
   },
 });
@@ -80,6 +83,15 @@ root.render(
                 ]}
               />
               <FormLogin style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/sites"
+          element={
+            <>
+              <Navbar items={[]} />
+              <Sites style={{ padding: "100px" }} />
             </>
           }
         />

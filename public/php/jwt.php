@@ -32,6 +32,12 @@ class JWT
         return rtrim(strtr(base64_encode($str), '+/', '-_'), '='); // base64 encode string
     }
 
+    public function get_payload_as_json(string $jwt): array
+    {
+        $token = explode('.', $jwt); // explode token based on JWT breaks
+        return json_decode(base64_decode($token[1]), true);
+    }
+
     public function is_expired(string $jwt): bool
     {
         $token = explode('.', $jwt); // explode token based on JWT breaks

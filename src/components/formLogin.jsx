@@ -40,10 +40,7 @@ const FormLogin = ({ style }) => {
           },
         }
       );
-      if (resp.data.exception !== undefined) {
-        setErr(resp.data.exception);
-        return;
-      } else if (resp.data.err !== undefined) {
+      if (resp.data.err !== undefined) {
         setErr(resp.data.err);
         return;
       } else if (resp.data.token === undefined) {
@@ -51,8 +48,8 @@ const FormLogin = ({ style }) => {
         setErr("unexpected error");
         return;
       }
-      sessionStorage.setItem("token", resp.data.token);
-      navigate("/personal-area");
+      sessionStorage.setItem("token", JSON.stringify(resp.data.token));
+      navigate("/sites");
     } catch (err) {
       console.log(err);
       setErr("unexpected error");

@@ -2,7 +2,6 @@ import React, { useState, useLayoutEffect } from "react";
 
 import {
   Typography,
-  Paper,
   Grid,
   Box,
   Card,
@@ -40,7 +39,7 @@ const Home = ({ style }) => {
               Our objective:
             </Typography>
             <Typography fontSize={20} component="div">
-              <h1 />
+              <br />
               Help our customers with intuitive software, easy to use, guarantee
               of reliability and efficiency. All the our products are developed
               ad hoc, ensuring a constant update since their creation carried

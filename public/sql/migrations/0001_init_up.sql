@@ -37,7 +37,7 @@ CREATE TABLE account (
 -- SEDE --
 CREATE TABLE site (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    indirizzo VARCHAR(64) NOT NULL,
+    site VARCHAR(64) NOT NULL,
     city VARCHAR(32) NOT NULL,
     CAP CHAR(5) NOT NULL,
     apartment_n INT NOT NULL,
