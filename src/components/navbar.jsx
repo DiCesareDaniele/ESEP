@@ -24,6 +24,9 @@ const useWindowSize = () => {
 };
 
 const Navbar = ({ items }) => {
+  if (items === undefined) {
+    items = [];
+  }
   const [width] = useWindowSize();
   const navigate = useNavigate();
   return (

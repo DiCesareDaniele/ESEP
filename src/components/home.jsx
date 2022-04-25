@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState, useLayoutEffect } from "react";
 
-import { Typography, Paper, Grid } from "@mui/material";
+import {
+  Typography,
+  Paper,
+  Grid,
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
+
+const useWindowSize = () => {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+};
 
 const Home = ({ style }) => {
+  const [width] = useWindowSize();
   const paperStyle = {
     padding: 20,
     width: "90%",
@@ -11,74 +33,46 @@ const Home = ({ style }) => {
   };
   return (
     <Grid style={style} container>
-      <Paper elevation={10} style={paperStyle}>
-        <Typography fontSize={40} textAlign="center">
-          HOME
-        </Typography>
-        <Typography fontSize={20}>
-          -Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit,
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
-          eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est,
-          qui dolorem ipsum, quia dolor sit, amet, consectetur, adipisci velit,
-          sed quia non numquam eius modi tempora incidunt, ut labore et dolore
-          magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-          nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-          aliquid ex ea commodi consequatur? Quis autem vel eum iure
-          reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae
-          consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla
-          pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus,
-          qui blanditiis praesentium voluptatum deleniti atque corrupti, quos
-          dolores et quas molestias excepturi sint, obcaecati cupiditate non
-          provident, similique sunt in culpa, qui officia deserunt mollitia
-          animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-          est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-          eligendi optio, cumque nihil impedit, quo minus id, quod maxime
-          placeat, facere possimus, omnis voluptas assumenda est, omnis dolor
-          repellendus. Temporibus autem quibusdam et aut officiis debitis aut
-          rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint
-          et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-          delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
-          perferendis doloribus asperiores repellat.Sed ut perspiciatis unde
-          omnis iste natus error sit voluptatem accusantium doloremque
-          laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore
-          veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo
-          enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut
-          fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem
-          sequi nesciunt, neque porro quisquam est, qui dolorem ipsum, quia
-          dolor sit, amet, consectetur, adipisci velit, sed quia non numquam
-          eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat
-          voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
-          ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi
-          consequatur? Quis autem vel eum iure reprehenderit, qui in ea
-          voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui
-          dolorem eum fugiat, quo voluptas nulla pariatur? At vero eos et
-          accusamus et iusto odio dignissimos ducimus, qui blanditiis
-          praesentium voluptatum deleniti atque corrupti, quos dolores et quas
-          molestias excepturi sint, obcaecati cupiditate non provident,
-          similique sunt in culpa, qui officia deserunt mollitia animi, id est
-          laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
-          distinctio. Nam libero tempore, cum soluta nobis est eligendi optio,
-          cumque nihil impedit, quo minus id, quod maxime placeat, facere
-          possimus, omnis voluptas assumenda est, omnis dolor repellendus.
-          Temporibus autem quibusdam et aut officiis debitis aut rerum
-          necessitatibus saepe eveniet, ut et voluptates repudiandae sint et
-          molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente
-          delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut
-          perferendis doloribus asperiores repellat.
-          <br />
-          <br />
-          -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </Typography>
-      </Paper>
+      <Card style={paperStyle} sx={{ display: "flex" }} elevation={10}>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" fontSize={30}>
+              Our objective:
+            </Typography>
+            <Typography fontSize={20} component="div">
+              <h1 />
+              Help our customers with intuitive software, easy to use, guarantee
+              of reliability and efficiency. All the our products are developed
+              ad hoc, ensuring a constant update since their creation carried
+              out according to the specific requests and needs of our customers.
+              Our company it constantly evolves and updates its employees on a
+              monthly basis training courses created for the development of the
+              skills of our personal. Esep offers a wide range of software
+              products for companies working in the field of public utilities,
+              gas, electricity and water. Our softwares are flexible and
+              adaptable to every need, solving every type of detail in detail
+              request from our customers.
+            </Typography>
+          </CardContent>
+          <Box
+            sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}
+          ></Box>
+        </Box>
+        {width > 850 && (
+          <Box>
+            <Box style={{ height: 50 }}></Box>
+            <CardMedia
+              component="img"
+              sx={{
+                width: width > 1100 ? 500 : Math.trunc(width / 3),
+                height: width > 1100 ? 300 : Math.trunc(width / 4),
+              }}
+              image="/img/solar_pannel.png"
+              alt="solar pannel"
+            />
+          </Box>
+        )}
+      </Card>
     </Grid>
   );
 };

@@ -11,6 +11,7 @@ import Home from "./components/home";
 import About from "./components/about";
 import Faq from "./components/faq";
 import PersonalArea from "./components/personal-area";
+import PageNotFound from "./components/pageNotFound";
 
 const theme = createTheme({
   palette: {
@@ -83,11 +84,11 @@ root.render(
           }
         />
         <Route
-          path="/"
+          path="*"
           element={
             <>
-              <Navbar items={[]} />
-              <PersonalArea style={{ padding: "100px" }} />
+              <Navbar />
+              <PageNotFound style={{ padding: "100px" }} />
             </>
           }
         />

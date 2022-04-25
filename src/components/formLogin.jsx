@@ -52,7 +52,7 @@ const FormLogin = ({ style }) => {
         return;
       }
       sessionStorage.setItem("token", resp.data.token);
-      navigate("personal-area");
+      navigate("/personal-area");
     } catch (err) {
       console.log(err);
       setErr("unexpected error");
