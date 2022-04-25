@@ -6,6 +6,7 @@ import {
   Checkbox,
   Button,
   Link,
+  Alert,
 } from "@mui/material";
 
 import { React, useState } from "react";
@@ -13,27 +14,49 @@ import axios from "axios";
 
 const FormLogin = ({ style }) => {
   const login = async () => {
-    console.log(mail, password, remember);
-    const config = await fetch("config.json")
-      .then((resp) => resp.json())
-      .catch((err) => err);
-    let data = await axios
-      .get(config.php.baseUrl + "test.php")
-      .then((resp) => resp.data)
-      .catch((err) => err);
-    console.log(data);
+    if (!email || !password) {
+      setErr("All field must be filled");
+      return;
+    }
+    try {
+      let resp = await axios.post(
+        (await config).php.baseUrl + "login.php",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (resp.data.err !== undefined) {
+        setErr(resp.data.err);
+        return;
+      } //else if () {
+      console.log(resp.data);
+      //}
+    } catch (err) {
+      console.log(err);
+      setErr("an error occurred");
+    }
   };
 
-  const [mail, setMail] = useState("");
+  const [err, setErr] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
 
+  const config = fetch("config.json")
+    .then((resp) => resp.json())
+    .then((resp) => resp)
+    .catch(() => setErr("An error occurred"));
   const paperStyle = {
     padding: 20,
-    height: "auto",
     width: 600,
     backgroundColor: "#ffffff",
-    margin: "20px auto",
+    margin: "auto",
   };
   const inputStyle = {
     marginTop: 20,
@@ -43,11 +66,12 @@ const FormLogin = ({ style }) => {
     height: "60px",
   };
   return (
-    <Grid style={style}>
+    <Grid style={style} container>
       <Paper elevation={10} style={paperStyle}>
+        {err !== "" && <Alert severity="warning">{err}</Alert>}
         <TextField
           onChange={(e) => {
-            setMail(e.target.value);
+            setEmail(e.target.value);
           }}
           label="Email"
           placeholder="Enter your Email"

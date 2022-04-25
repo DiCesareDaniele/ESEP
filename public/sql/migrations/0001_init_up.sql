@@ -118,18 +118,3 @@ CREATE TABLE bill (
 	FOREIGN KEY(id_contract) REFERENCES contract(id)
 		ON UPDATE CASCADE ON DELETE CASCADE,
 );
-
-
-
-CREATE USER 'default'@'localhost' IDENTIFIED BY 'evRCyB6qzL9A8cUG';
-GRANT SELECT ON 'esep'.'clients' TO 'default'@'localhost';
-
-CREATE USER 'personal'@'localhost' IDENTIFIED BY '8eFrZDd6jwr26Uq4';
-GRANT SELECT ON *.* TO 'personal'@'localhost';
-GRANT UPDATE ON *.* TO 'personal'@'localhost';
-
-CREATE USER 'enterprise'@'localhost' IDENTIFIED BY 'UdFCPMgV5jzc7Xr8';
-GRANT SELECT ON *.* TO 'enterprise'@'localhost';
-GRANT UPDATE ON *.* TO 'enterprise'@'localhost';
-
-FLUSH PRIVILEGES;

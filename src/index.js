@@ -1,11 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./index.css";
 
 import FormLogin from "./components/formLogin";
 import Navbar from "./components/navbar";
-
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Home from "./components/home";
+import About from "./components/about";
+import Faq from "./components/faq";
 
 const theme = createTheme({
   palette: {
@@ -17,16 +21,67 @@ const theme = createTheme({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Router>
     <ThemeProvider theme={theme}>
-      <Navbar
-        items={[
-          { text: "ABOUT US", img: "/img/persone.png" },
-          { text: "FAQ", img: "/img/question.png" },
-          { text: "SECURITY", img: "/img/security.png" },
-        ]}
-      />
-      <FormLogin style={{ padding: "100px" }} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "ABOUT US", img: "/img/about.png", url: "/about" },
+                  { text: "FAQ", img: "/img/faq.png", url: "/faq" },
+                  { text: "LOGIN", img: "img/login.png", url: "/login" },
+                ]}
+              />
+              <Home style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "FAQ", img: "/img/faq.png", url: "/faq" },
+                  { text: "LOGIN", img: "img/login.png", url: "/login" },
+                ]}
+              />
+              <About style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/faq"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "ABOUT US", img: "/img/about.png", url: "/about" },
+                  { text: "LOGIN", img: "img/login.png", url: "/login" },
+                ]}
+              />
+              <Faq style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "ABOUT US", img: "/img/about.png", url: "/about" },
+                  { text: "FAQ", img: "/img/faq.png", url: "/faq" },
+                ]}
+              />
+              <FormLogin style={{ padding: "100px" }} />
+            </>
+          }
+        />
+      </Routes>
     </ThemeProvider>
-  </React.StrictMode>
+  </Router>
 );

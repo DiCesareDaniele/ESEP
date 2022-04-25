@@ -15,9 +15,3 @@ DROP TABLE contract;
 DROP TABLE detections;
 
 DROP TABLE bill;
-
-DROP USER 'default'@'localhost';
-
-DROP USER 'personal'@'localhost';
-
-DROP USER 'enterprise'@'localhost';
