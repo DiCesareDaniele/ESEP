@@ -12,8 +12,17 @@ import {
 import { React, useState } from "react";
 import axios from "axios";
 
+import Cookies from "universal-cookie";
+
+import { useNavigate } from "react-router-dom";
+
 const FormLogin = ({ style }) => {
   const login = async () => {
+    if (remember) {
+      cookieManager.set("email", email, { path: "/" });
+    } else {
+      cookieManager.set("email", "", { path: "/", expires: 0 });
+    }
     if (!email || !password) {
       setErr("All field must be filled");
       return;
@@ -31,27 +40,37 @@ const FormLogin = ({ style }) => {
           },
         }
       );
-      if (resp.data.err !== undefined) {
+      if (resp.data.exception !== undefined) {
+        setErr(resp.data.exception);
+        return;
+      } else if (resp.data.err !== undefined) {
         setErr(resp.data.err);
         return;
-      } //else if () {
-      console.log(resp.data);
-      //}
+      } else if (resp.data.token === undefined) {
+        console.log(resp.data);
+        setErr("unexpected error");
+        return;
+      }
+      sessionStorage.setItem("token", resp.data.token);
+      navigate("personal-area");
     } catch (err) {
       console.log(err);
-      setErr("an error occurred");
+      setErr("unexpected error");
     }
   };
 
+  const cookieManager = new Cookies();
+  const navigate = useNavigate();
+
   const [err, setErr] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(cookieManager.get("email"));
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(true);
 
   const config = fetch("config.json")
     .then((resp) => resp.json())
     .then((resp) => resp)
-    .catch(() => setErr("An error occurred"));
+    .catch(() => setErr("unexpected error"));
   const paperStyle = {
     padding: 20,
     width: 600,
@@ -61,9 +80,6 @@ const FormLogin = ({ style }) => {
   const inputStyle = {
     marginTop: 20,
     backgroundColor: "#ffffff",
-  };
-  const singInStyle = {
-    height: "60px",
   };
   return (
     <Grid style={style} container>
@@ -78,6 +94,7 @@ const FormLogin = ({ style }) => {
           fullWidth
           required
           style={inputStyle}
+          defaultValue={cookieManager.get("email")}
         ></TextField>
         <TextField
           onChange={(e) => {
@@ -102,7 +119,9 @@ const FormLogin = ({ style }) => {
           type="submit"
           variant="contained"
           color="primary"
-          style={singInStyle}
+          style={{
+            height: "60px",
+          }}
           fullWidth
         >
           Sign in

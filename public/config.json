@@ -1,4 +1,10 @@
 {
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "my_esepayments"
+  },
   "php": {
     "baseUrl": "http://localhost/esepay/public/php/"
   }

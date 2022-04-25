@@ -1,20 +1,3 @@
--- ACCOUNT --
-CREATE TABLE account (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	personal_id INT,
-	enterprise_id INT,
-	email VARCHAR(64) NOT NULL,
-	password VARCHAR(128) NOT NULL,
-	type ENUM('personal', 'enterprise') NOT NULL,
-	UNIQUE(email),
-	FOREIGN KEY(personal_id) REFERENCES personal(id)
-		ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY(enterprise_id) REFERENCES enterprise(id)
-		ON UPDATE CASCADE ON DELETE CASCADE,
-	CHECK(enterprise_id IS NULL AND personal_id IS NOT NULL 
-			OR enterprise_id IS NOT NULL AND personal_id IS NULL)
-);
-
 -- PERSONA FISICA --
 CREATE TABLE personal (
 	id INT AUTO_INCREMENT PRIMARY KEY,
@@ -32,6 +15,23 @@ CREATE TABLE enterprise (
 	P_IVA CHAR(11) NOT NULL,
 	phone VARCHAR(15),
 	UNIQUE(P_IVA)
+);
+
+-- ACCOUNT --
+CREATE TABLE account (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	personal_id INT,
+	enterprise_id INT,
+	email VARCHAR(64) NOT NULL,
+	password VARCHAR(128) NOT NULL,
+	type ENUM('personal', 'enterprise') NOT NULL,
+	UNIQUE(email),
+	FOREIGN KEY(personal_id) REFERENCES personal(id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY(enterprise_id) REFERENCES enterprise(id)
+		ON UPDATE CASCADE ON DELETE CASCADE,
+	CHECK(enterprise_id IS NULL AND personal_id IS NOT NULL 
+			OR enterprise_id IS NOT NULL AND personal_id IS NULL)
 );
 
 -- SEDE --

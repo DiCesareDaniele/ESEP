@@ -10,6 +10,7 @@ import Navbar from "./components/navbar";
 import Home from "./components/home";
 import About from "./components/about";
 import Faq from "./components/faq";
+import PersonalArea from "./components/personal-area";
 
 const theme = createTheme({
   palette: {
@@ -78,6 +79,15 @@ root.render(
                 ]}
               />
               <FormLogin style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <>
+              <Navbar items={[]} />
+              <PersonalArea style={{ padding: "100px" }} />
             </>
           }
         />

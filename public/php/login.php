@@ -7,7 +7,11 @@ header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Origin, Acce
 // response
 header("Content-type: application/json");
 
+//require_once("./vendor/autoload.php");
+//use Firebase\JWT\JWT;
+
 include_once("dbConn.php");
+include_once("jwt.php");
 
 $db = dbConn();
 
@@ -19,9 +23,23 @@ $stmt->execute();
 $res = $stmt->get_result();
 
 if ($res->num_rows) {
-    
+    $account = $res->fetch_assoc();
+    if (password_verify($post["password"], $account["password"])) {
+        $jwt = new JWT();
+        $payload = [
+            "email" => $post["email"],
+            "passowrd" => $post["password"],
+            "iss" => "esep.com", 
+            "aud" => "esepay.com"
+        ];
+        $token = $jwt->generate($payload);
+        echo json_encode(["token"=>$token]);
+    } else {
+        echo json_encode(["err"=>"Wrong password"]);
+    }
 } else {
     echo json_encode(["err"=>"This email is not registered"]);
 }
+
 
 ?>
