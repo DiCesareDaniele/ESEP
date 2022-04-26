@@ -133,12 +133,12 @@ const Sites = ({ style }) => {
         ></TextField>
         <FormControlLabel
           control={<Checkbox defaultChecked={false} />}
-          label="SHOW NOT CESSATED"
+          label="NOT CESSATED"
           onChange={(e) => setShowCessated(e.target.checked)}
         />
         <FormControlLabel
           control={<Checkbox defaultChecked={false} />}
-          label="SHOW CESSATED"
+          label="CESSATED"
           onChange={(e) => setShowNotCessated(e.target.checked)}
         />
       </Paper>
