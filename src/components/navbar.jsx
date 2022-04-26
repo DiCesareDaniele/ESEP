@@ -45,9 +45,13 @@ const Navbar = ({ items }) => {
           {width > 400 &&
             items.map((item) => (
               <Button key={item.text} onClick={() => navigate(item.url)}>
-                <Avatar src={item.img} variant="rounded" />
+                {item.img !== undefined && (
+                  <Avatar src={item.img} variant="rounded" />
+                )}
                 {width > 600 && (
-                  <Typography color="black">{item.text}</Typography>
+                  <Typography color="black" fontWeight={600}>
+                    {item.text}
+                  </Typography>
                 )}
               </Button>
             ))}

@@ -11,6 +11,10 @@ import Home from "./components/home";
 import About from "./components/about";
 import Faq from "./components/faq";
 import Sites from "./components/sites";
+import Meters from "./components/meters";
+import Bills from "./components/bills";
+import Contracts from "./components/contracts";
+import Detections from "./components/detections";
 import PageNotFound from "./components/pageNotFound";
 
 const theme = createTheme({
@@ -90,8 +94,79 @@ root.render(
           path="/sites"
           element={
             <>
-              <Navbar items={[]} />
+              <Navbar
+                items={[
+                  { text: "METERS", url: "/meters" },
+                  { text: "BILLS", url: "/bills" },
+                  { text: "CONTRACTS", url: "/contracts" },
+                  { text: "DETECTIONS", url: "/detections" },
+                ]}
+              />
               <Sites style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/meters"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "SITES", url: "/sites" },
+                  { text: "BILLS", url: "/bills" },
+                  { text: "CONTRACTS", url: "/contracts" },
+                  { text: "DETECTIONS", url: "/detections" },
+                ]}
+              />
+              <Meters style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/bills"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "METERS", url: "/meters" },
+                  { text: "SITES", url: "/sites" },
+                  { text: "CONTRACTS", url: "/contracts" },
+                  { text: "DETECTIONS", url: "/detections" },
+                ]}
+              />
+              <Bills style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/contracts"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "METERS", url: "/meters" },
+                  { text: "SITES", url: "/sites" },
+                  { text: "BILLS", url: "/bills" },
+                  { text: "DETECTIONS", url: "/detections" },
+                ]}
+              />
+              <Contracts style={{ padding: "100px" }} />
+            </>
+          }
+        />
+        <Route
+          path="/detections"
+          element={
+            <>
+              <Navbar
+                items={[
+                  { text: "METERS", url: "/meters" },
+                  { text: "SITES", url: "/sites" },
+                  { text: "BILLS", url: "/bills" },
+                  { text: "CONTRACTS", url: "/contracts" },
+                ]}
+              />
+              <Detections style={{ padding: "100px" }} />
             </>
           }
         />

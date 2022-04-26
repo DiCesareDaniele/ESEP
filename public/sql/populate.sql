@@ -40,7 +40,7 @@ INSERT INTO contract (id, id_meter, id_supply, date_S, date_F, date_C) VALUES
 -- CONTRATTI AGENZIA ESEP --
 ();
 
-INSERT INTO detection (id, date_S, date_F, id_meter, detection) VALUES
+INSERT INTO detections (id, date_S, date_F, id_meter, detection) VALUES
 -- RILEVAZIONI BALZO --
     -- GAS --
 (1, "2021-01-01", "2021-04-01", 1, 423.2),
@@ -48,10 +48,10 @@ INSERT INTO detection (id, date_S, date_F, id_meter, detection) VALUES
 (3, "2021-08-01", "2022-01-01", 1, 474.4),
 (4, "2022-01-01", "2022-04-01", 1, 515.0),
     -- EE --
-(1, "2021-01-01", "2021-04-01", 1, 3246.1),
-(2, "2021-04-01", "2021-08-01", 1, 4565.3),
-(3, "2021-08-01", "2022-01-01", 1, 6565.5),
-(4, "2022-01-01", "2022-04-01", 1, 4566.2),
+(5, "2021-01-01", "2021-04-01", 2, 3246.1),
+(6, "2021-04-01", "2021-08-01", 2, 4565.3),
+(7, "2021-08-01", "2022-01-01", 2, 6565.5),
+(8, "2022-01-01", "2022-04-01", 2, 4566.2),
 -- RILEVAZIONI ESEP --
 ();
 
