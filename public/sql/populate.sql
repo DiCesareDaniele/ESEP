@@ -13,7 +13,8 @@ INSERT INTO account (id, email, password, type, personal_id, enterprise_id) VALU
 
 INSERT INTO site (id, site, city, CAP, apartment_n, personal_id, enterprise_id) VALUES 
 -- CASA BALZO --
-(1, "Via Brombeis", "Verona", "37138", 0, 1, NULL),
+(1, "Via Brombeis", "Napoli", "43572", 0, 1, NULL),
+(2, "Via Mazzini", "Verona", "37138", 5, 1, NULL),
 -- AZIENDE ESEP --
 ();
 
@@ -21,6 +22,8 @@ INSERT INTO meter (id, id_site, utility) VALUES
 -- CONTATORI BALZO --
 (1, 1, "GAS"),
 (2, 1, "EE"),
+(3, 2, "GAS"),
+(4, 2, "EE"),
 -- CONTATORI AGENZIA ESEP --
 ();
 
@@ -37,6 +40,8 @@ INSERT INTO contract (id, id_meter, id_supply, date_S, date_F, date_C) VALUES
 (1, 1, 1, "2021-01-01", "2025-02-02", NULL),
 (2, 1, 5, "2019-05-06", "2021-01-01", "2020-01-13"),
 (3, 2, 2, "2019-04-21", "2023-01-01", NULL),
+(4, 3, 3, "2021-01-01", "2025-02-02", NULL),
+(5, 4, 4, "2019-05-06", "2023-01-01", "2020-01-13"),
 -- CONTRATTI AGENZIA ESEP --
 ();
 
@@ -47,11 +52,19 @@ INSERT INTO detections (id, date_S, date_F, id_meter, detection) VALUES
 (2, "2021-04-01", "2021-08-01", 1, 432.6),
 (3, "2021-08-01", "2022-01-01", 1, 474.4),
 (4, "2022-01-01", "2022-04-01", 1, 515.0),
+(5, "2021-01-01", "2021-04-01", 3, 413.2),
+(6, "2021-04-01", "2021-08-01", 3, 434.4),
+(7, "2021-08-01", "2022-01-01", 3, 404.8),
+(8, "2022-01-01", "2022-04-01", 3, 435.3),
     -- EE --
 (5, "2021-01-01", "2021-04-01", 2, 3246.1),
 (6, "2021-04-01", "2021-08-01", 2, 4565.3),
 (7, "2021-08-01", "2022-01-01", 2, 6565.5),
 (8, "2022-01-01", "2022-04-01", 2, 4566.2),
+(9, "2021-01-01", "2021-04-01", 4, 3243.1),
+(10, "2021-04-01", "2021-08-01", 4, 4549.3),
+(11, "2021-08-01", "2022-01-01", 4, 5525.5),
+(12, "2022-01-01", "2022-04-01", 4, 4566.2),
 -- RILEVAZIONI ESEP --
 ();
 
